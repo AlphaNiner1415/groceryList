@@ -10,5 +10,8 @@ export class Tab1Page {
     { name: "Banana", price: "50"}
   ]
   constructor() {}
+  itemwasClicked(){
+    console.log("Item name was clicked!!!");
+  }
 
 }

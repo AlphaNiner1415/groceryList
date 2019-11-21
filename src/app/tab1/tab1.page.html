@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header >
   <ion-toolbar color = "primary">
     <ion-title>
       Grocery List
@@ -9,29 +9,31 @@
 <ion-content>
     <ion-list>
       <ion-item>
-        <ion-list-header>Item name</ion-list-header>
-        <ion-list-header position = "floating">Price</ion-list-header>
+        <ion-list-header (click)="itemwasClicked()">Item Name</ion-list-header>
+        <div class="ion-text-end"> 
+          <ion-list-header>Prices</ion-list-header>
+        </div>
       </ion-item>
+      
       <ion-item *ngFor="let items of shoppingList">
         <ion-grid>
           <ion-row>
-            <ion-col size="4">
+            <ion-col class="ion-float-left">
               <div>
                 {{items.name}}
               </div>
             </ion-col>
-            <ion-col size = "3" offset= "5">
-              <div>
+            <ion-col class="ion-float-right">
+              <div class="ion-text-end">
                 {{items.price}}
               </div>
             </ion-col>
           </ion-row>
         </ion-grid>
-        
       </ion-item>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button size = medium>
+      <ion-fab-button size = medium >
         <ion-icon name="add" size = large></ion-icon>
       </ion-fab-button>
     </ion-fab>

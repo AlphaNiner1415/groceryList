@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
+  public shoppingList = [
+    { name: "Banana", price: "50"}
+  ]
   constructor() {}
 
 }

@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
 export class Tab2Page {
 
   constructor() {}
+  squareclick(){
+    console.log("Square number 2 was clicked!!!");
+  }
 
 }

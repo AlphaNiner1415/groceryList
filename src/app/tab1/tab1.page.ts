@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
   public shoppingList = [
-    { name: "Banana", price: "50"}
+    { name: "Banana", price: "50", img: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1024-80.jpg"}
   ]
   constructor() {}
   itemwasClicked(){

@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'create-new-item',
+    loadChildren: () => import('./create-new-item/create-new-item.module').then( m => m.CreateNewItemPageModule)
   }
   
 ];

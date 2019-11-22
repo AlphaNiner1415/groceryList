@@ -10,8 +10,8 @@
     <ion-list>
       <ion-item>
         <ion-list-header (click)="itemwasClicked()">Item Name</ion-list-header>
-        <div class="ion-float-left"> 
-          <ion-list-header class="ion-text-start">Prices</ion-list-header>
+        <div class="ion-float-right"> 
+          <ion-list-header >Prices</ion-list-header>
         </div>
       </ion-item>
       
@@ -44,7 +44,7 @@
       </ion-item-sliding>
     </ion-list>
     
-    <ion-fab vertical="bottom" horizontal="right" slot="fixed">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button size = medium (click)="presentPopover()">
         <ion-icon name="add" size = large></ion-icon>
       </ion-fab-button>

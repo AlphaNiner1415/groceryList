@@ -8,11 +8,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TestModalPageModule } from './test-modal/test-modal.module';
+import { PopoverComponent } from './components/popover/popover.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent, PopoverComponent],
+  entryComponents: [PopoverComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, TestModalPageModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -15,30 +15,37 @@
         </div>
       </ion-item>
       
-      <ion-item *ngFor="let items of shoppingList">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <img src={{items.img}} width="200">
-            </ion-col>
-            <ion-col>
-              <div>
-                {{items.name}}
-              </div>
-            </ion-col>
-           
-            <ion-col class="ion-float-right">
-              <div class="ion-text-end">
-                {{items.price}}
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+      <ion-item-sliding *ngFor="let items of shoppingList">
+        <ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img src={{items.img}} width="200">
+              </ion-col>
+              <ion-col>
+                <div>
+                  {{items.name}}
+                </div>
+              </ion-col>
+            
+              <ion-col class="ion-float-right">
+                <div class="ion-text-end">
+                  {{items.price}}
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)=deleteItem(items)>
+            <ion-icon slot="icon-only" name="trash" ></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
     
     <ion-fab vertical="bottom" horizontal="right" slot="fixed">
-      <ion-fab-button size = medium (click) >
+      <ion-fab-button size = medium (click)="presentPopover()">
         <ion-icon name="add" size = large></ion-icon>
       </ion-fab-button>
     </ion-fab>

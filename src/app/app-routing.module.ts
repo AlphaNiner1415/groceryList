@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'create-new-item',
     loadChildren: () => import('./create-new-item/create-new-item.module').then( m => m.CreateNewItemPageModule)
+  },
+  {
+    path: 'test-modal',
+    loadChildren: () => import('./test-modal/test-modal.module').then( m => m.TestModalPageModule)
   }
   
 ];

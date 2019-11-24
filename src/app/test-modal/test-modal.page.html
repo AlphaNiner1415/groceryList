@@ -1,12 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button (click)=closeModal() defaultHref= "/" mode="ios"></ion-back-button>
-    </ion-buttons>
-    <ion-title>CHOOSE AN ITEM TO ADD</ion-title>
+    <ion-button fill="clear" class="exit-button" (click)="dismiss()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-label no-wrap>Search For the Item you wish:</ion-label>
+    <ion-searchbar></ion-searchbar>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
-  <ion-searchbar></ion-searchbar>
+  
 </ion-content>

@@ -21,7 +21,7 @@ export class Tab1Page implements OnInit{
   isOkToAdd: boolean =false;
   totalPrice: number = 0;
   sortingBy="";
-  constructor(public popoverController: PopoverController, public alertController:AlertController) {}
+  constructor(public popoverController: PopoverController, public alertController:AlertController,public modalController: ModalController) {}
   ngOnInit(){
 
   }
@@ -55,7 +55,7 @@ export class Tab1Page implements OnInit{
     if (this.shoppingList.indexOf(entryToDelete) != -1) {
       this.shoppingList.splice(this.shoppingList.indexOf(entryToDelete), 1);
       console.log("item is deleted!");
-      this.updateTotalPrice();
+      
     }
 
   }
@@ -97,29 +97,26 @@ export class Tab1Page implements OnInit{
       this.shoppingList.splice(0,this.shoppingList.length);
     }
   }
-  compare(a, b, sortParam) {
-    if(sortParam== "name"){
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-      return 0;
-    }
-    if(sortParam=="Price"){
-      if(a.price < b.price){
-        return -1;
-      }
-      if(a.price > b.price){
-        return 1;
-      }
-      return 0;
-    }
+  doRefresh(event) {
+    console.log('Begin async operation');
     
-    // a must be equal to b
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+    this.updateTotalPrice();
+  }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: TestModalPage
+    });
+    return await modal.present();
+  }
+  
+}
     
-}
-}
+    
+
+
 
 

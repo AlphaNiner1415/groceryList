@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-item>
       <ion-list-header (click)="sortBy('name')">Item</ion-list-header>
@@ -25,9 +30,9 @@
                 <img src={{items.img}} class="img">
               </ion-col>
               <ion-col>
-                <div>
+                <ion-card-subtitle>
                   {{items.name}}
-                </div>
+                </ion-card-subtitle>
               </ion-col>
             
               <ion-col class="ion-float-right">
@@ -38,8 +43,8 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger" (click)=deleteItem(items)>
+        <ion-item-options side="end" (ionSwipe)="deleteItem(items)">
+          <ion-item-option color="danger" (click)=deleteItem(items) expandable>
             <ion-icon slot="icon-only" name="trash" ></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -53,9 +58,9 @@
       <h2>฿{{totalPrice}}</h2>
     </ion-label>
   </ion-item>
-  <ion-button (click)=updateTotalPrice()>Click me</ion-button>
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button size = medium (click)="presentPopover()">
+    <ion-fab-button size = medium (click)="presentModal()">
       <ion-icon name="add" size = large></ion-icon>
     </ion-fab-button>
   </ion-fab>

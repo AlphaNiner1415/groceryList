@@ -12,25 +12,21 @@
     <ion-col> 
       <ion-card>
         <ion-card-header>
-          <ion-badge>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Big_C_Logo.svg/1200px-Big_C_Logo.svg.png" class="image">
-          </ion-badge>
-        </ion-card-header>
-        <ion-card-content>
-          hello
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card button=true (click) = "card2Clicked()">
-        <ion-card-header>
-          <ion-badge>
+          <ion-badge color="tops">
             <ion-icon name="bicycle"></ion-icon>
           </ion-badge>
         </ion-card-header>
         <ion-card-content>
-          Hello2
+          <ion-label><h1>Tops</h1></ion-label>
+          
         </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-item class="activated">
+          <ion-label>Hello world</ion-label>
+        </ion-item>
       </ion-card>
     </ion-col>
   </ion-row>
@@ -38,25 +34,35 @@
     <ion-col>
       <ion-card>
         <ion-card-header>
-          <ion-badge>
+          <ion-badge color="lotus">
             <ion-icon name="bicycle"></ion-icon>
           </ion-badge>
         </ion-card-header>
         
         <ion-card-content>
-          Hello33
+          <ion-label>
+            <h1>Tesco Lotus</h1>
+          </ion-label>
         </ion-card-content>
       </ion-card>
     </ion-col>
     <ion-col>
       <ion-card>
         <ion-card-content>
-          Hello33
+          7-Eleven
         </ion-card-content>
         
       </ion-card>
     </ion-col>
   </ion-row>
+  <ion-card>
+    <button ion-item (click)= card2Clicked()>
+      <ion-item href="#" class="activated">
+        <ion-icon name="wifi" slot="start"></ion-icon>
+        <ion-label>Card Link Item 1 .activated</ion-label>
+      </ion-item>
+    </button>
+  </ion-card>
   
   
 

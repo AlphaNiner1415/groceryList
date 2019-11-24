@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { TestModalPage } from '../test-modal/test-modal.page';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../components/popover/popover.component';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tab1',
@@ -11,42 +13,51 @@ import { PopoverComponent } from '../components/popover/popover.component';
 })
 export class Tab1Page implements OnInit{
   public shoppingList = [
-    { name: "Banana", price: "50", img: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1024-80.jpg"},
-    { name: "Mango", price: "50"}
+    { name: "Banana", price: 50, img: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1024-80.jpg"},
+    { name: "Mango", price: 30},
+    { name: "Apple", price: 80}
   ]
   dataReturned: any;
-  
-  constructor(public modalController: ModalController, public popoverController: PopoverController) {}
+  isOkToAdd: boolean =false;
+  totalPrice: number = 0;
+  sortingBy="";
+  constructor(public popoverController: PopoverController, public alertController:AlertController) {}
   ngOnInit(){
 
   }
-  itemwasClicked(){
-    console.log("Item name was clicked!!!");
+  updateTotalPrice(){
+    this.totalPrice = 0;
+    this.shoppingList.forEach(element => {
+      this.totalPrice = this.totalPrice+ element.price;
+      console.log(this.totalPrice);
+    });
+  }
+  sortBy(whatToSort: any){
+    if(whatToSort=="name"){
+      this.sortingBy="name";
+      this.shoppingList.sort(function (a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+        if (nameA < nameB) { return -1; }
+        if (nameA > nameB) { return 1; }
+        return 0;
+      });
+    }
+    if(whatToSort=="price"){
+      this.sortingBy = "price";
+      this.shoppingList.sort(function (a, b) {
+        return b.price - a.price;
+      });
+    }
+    
   }
   deleteItem(entryToDelete: any){
     if (this.shoppingList.indexOf(entryToDelete) != -1) {
       this.shoppingList.splice(this.shoppingList.indexOf(entryToDelete), 1);
       console.log("item is deleted!");
+      this.updateTotalPrice();
     }
-  }
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: TestModalPage,
-      componentProps: {
-        "paramID": 123,
-        "paramTitle": "Test Title"
-      }
-    });
 
-    modal.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        this.dataReturned = dataReturned.data;
-        //alert('Modal Sent Data :'+ dataReturned);
-      }
-    });
-
-    return await modal.present();
-    
   }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -56,4 +67,59 @@ export class Tab1Page implements OnInit{
     return await popover.present();
   
   }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.isOkToAdd=true;
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        } 
+      ]
+    });
+
+    await alert.present();
+  }
+  commenceAddingToCart(){
+    if(this.isOkToAdd){
+      this.shoppingList.splice(0,this.shoppingList.length);
+    }
+  }
+  compare(a, b, sortParam) {
+    if(sortParam== "name"){
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    }
+    if(sortParam=="Price"){
+      if(a.price < b.price){
+        return -1;
+      }
+      if(a.price > b.price){
+        return 1;
+      }
+      return 0;
+    }
+    
+    // a must be equal to b
+    
 }
+}
+
+

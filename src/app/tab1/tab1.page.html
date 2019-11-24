@@ -7,20 +7,22 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-      <ion-item>
-        <ion-list-header (click)="itemwasClicked()">Item Name</ion-list-header>
-        <div class="ion-float-right"> 
-          <ion-list-header >Prices</ion-list-header>
-        </div>
-      </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-list-header (click)="sortBy('name')">Item</ion-list-header>
+      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='name'"></ion-icon>
       
-      <ion-item-sliding *ngFor="let items of shoppingList">
+      <ion-list-header (click)="sortBy('price')" class="ion-text-right">Prices</ion-list-header>
+      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='price'"></ion-icon>
+    </ion-item>
+    
+    <ion-card *ngFor="let items of shoppingList">
+      <ion-item-sliding>
         <ion-item>
           <ion-grid>
             <ion-row>
               <ion-col>
-                <img src={{items.img}} width="200">
+                <img src={{items.img}} class="img">
               </ion-col>
               <ion-col>
                 <div>
@@ -30,7 +32,7 @@
             
               <ion-col class="ion-float-right">
                 <div class="ion-text-end">
-                  {{items.price}}
+                  ฿{{items.price}}
                 </div>
               </ion-col>
             </ion-row>
@@ -42,11 +44,27 @@
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
-    </ion-list>
-    
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button size = medium (click)="presentPopover()">
-        <ion-icon name="add" size = large></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    </ion-card>
+
+  </ion-list>
+  <ion-item *ngIf='shoppingList.length!=0'>
+    <h3>Total:</h3>
+    <ion-label class="ion-text-end">
+      <h2>฿{{totalPrice}}</h2>
+    </ion-label>
+  </ion-item>
+  <ion-button (click)=updateTotalPrice()>Click me</ion-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size = medium (click)="presentPopover()">
+      <ion-icon name="add" size = large></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button size=medium (click)="presentAlertConfirm()">
+      <ion-icon name="cart" size="large"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
+
 </ion-content>
+

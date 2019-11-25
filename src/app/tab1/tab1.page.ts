@@ -4,6 +4,7 @@ import { TestModalPage } from '../test-modal/test-modal.page';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../components/popover/popover.component';
 import { AlertController } from '@ionic/angular';
+import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.component';
 
 
 @Component({
@@ -106,11 +107,15 @@ export class Tab1Page implements OnInit{
     }, 2000);
     this.updateTotalPrice();
   }
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: TestModalPage
+  pressed(){
+    console.log("card was pressed");
+  }
+  async presentItemPreview(ev:any){
+    const popover = await this.popoverController.create({
+      component: ItemPreviewComponent,
+      event: ev,
     });
-    return await modal.present();
+    return await popover.present();
   }
   
 }

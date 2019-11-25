@@ -51,7 +51,9 @@
   --ion-color-lotus-contrast-rgb: 255,255,255;
   --ion-color-lotus-shade: #3a846c;
   --ion-color-lotus-tint: #55a188;
-
+  ion-popover {
+  --width: 80%;
+}
 }
 
 .row{
@@ -76,7 +78,3 @@
   --ion-color-tint: var(--ion-color-lotus-tint);
 }
 
-
-
-
-@import "~@mobiscroll/angular/dist/css/mobiscroll.scss";

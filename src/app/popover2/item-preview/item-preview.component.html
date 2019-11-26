@@ -1,5 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Hey</ion-title>
-  </ion-toolbar>
-</ion-header>
+<style>
+  .popover {
+    height: 500px;
+    width: 600px;
+  }
+</style>
+  <ion-card class="card">
+    <ion-button fill="clear" (click)="exit()" size="large">
+      <ion-icon name="close" color="dark" size="large"></ion-icon>
+    </ion-button>
+    <img src={{img}} class="img"> 
+    <ion-card-header fill="clear">
+      <ion-card-title>{{name}}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-item color="bigc" translucent="true" class="BigCCard">
+      <ion-label>Big C Price: {{price}}</ion-label>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+

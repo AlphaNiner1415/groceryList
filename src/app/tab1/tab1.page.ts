@@ -22,7 +22,10 @@ export class Tab1Page implements OnInit{
   isOkToAdd: boolean =false;
   totalPrice: number = 0;
   sortingBy="";
-  constructor(public popoverController: PopoverController, public alertController:AlertController,public modalController: ModalController) {}
+  itemToUseName: any;
+  constructor(public popoverController: PopoverController, 
+    public alertController:AlertController,
+    public modalController: ModalController) {}
   ngOnInit(){
 
   }
@@ -114,8 +117,13 @@ export class Tab1Page implements OnInit{
     const popover = await this.popoverController.create({
       component: ItemPreviewComponent,
       event: ev,
+      componentProps: this.shoppingList.find(element => element.name== this.itemToUseName)
     });
     return await popover.present();
+  }
+  setName(thatName){
+    this.itemToUseName = thatName;
+    console.log(this.itemToUseName);
   }
   
 }

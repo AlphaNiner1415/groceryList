@@ -22,6 +22,7 @@ export class Tab1Page implements OnInit{
   isOkToAdd: boolean =false;
   totalPrice: number = 0;
   sortingBy="";
+  myEvent: any;
   itemToUseName: any;
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController,
@@ -64,12 +65,12 @@ export class Tab1Page implements OnInit{
 
   }
   async presentPopover(ev: any) {
+    console.log(ev, 'pop Over');
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       event: ev,
-    });
+     });
     return await popover.present();
-  
   }
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -110,18 +111,17 @@ export class Tab1Page implements OnInit{
     }, 2000);
     this.updateTotalPrice();
   }
-  pressed(){
-    console.log("card was pressed");
-  }
   async presentItemPreview(ev:any){
+    console.log('Preview',this.myEvent);
     const popover = await this.popoverController.create({
       component: ItemPreviewComponent,
-      event: ev,
+      event: this.myEvent,
       componentProps: this.shoppingList.find(element => element.name== this.itemToUseName)
     });
     return await popover.present();
   }
-  setName(thatName){
+  setName(thatName,event){
+    this.myEvent = event;
     this.itemToUseName = thatName;
     console.log(this.itemToUseName);
   }

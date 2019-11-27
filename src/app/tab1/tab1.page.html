@@ -30,8 +30,8 @@
                 <img src={{items.img}} class="img">
               </ion-col>
               <ion-col ion-long-press [interval]="400"
-  (pressed)="setName(items.name)"
-  (longPressed)="presentItemPreview($click)">
+  (pressed)="setName(items.name,$event)"
+  (longPressed)="presentItemPreview($event)">
                 <ion-card-subtitle>
                   {{items.name}}
                 </ion-card-subtitle>

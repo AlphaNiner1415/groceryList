@@ -15,8 +15,8 @@ import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.comp
 export class Tab1Page implements OnInit{
   public shoppingList = [
     { name: "Banana", price: 50, img: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1024-80.jpg"},
-    { name: "Mango", price: 30},
-    { name: "Apple", price: 80}
+    { name: "Mango", price: 60, img: "https://cdn.shopify.com/s/files/1/0076/4339/8233/products/yellow-mango.jpg?v=1544861632"},
+    { name: "Apple", price: 30, img: "https://5.imimg.com/data5/YY/EN/MY-8155364/fresh-apple-500x500.jpg"}
   ]
   dataReturned: any;
   isOkToAdd: boolean =false;

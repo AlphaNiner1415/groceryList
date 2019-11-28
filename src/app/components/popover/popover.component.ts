@@ -8,8 +8,11 @@ import { PopoverController, NavParams, Events } from '@ionic/angular';
 })
 export class PopoverComponent implements OnInit {
 
-  constructor() { }
+  constructor(public navParams: NavParams, public popoverController: PopoverController) { }
 
   ngOnInit() {}
+  popOverWasClicked(){
+    this.popoverController.dismiss();
+  }
 
 }

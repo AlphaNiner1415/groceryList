@@ -7,62 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar debounce="500"></ion-searchbar>
-  <ion-row wrap>
-    <ion-col> 
-      <ion-card>
-        <ion-card-header>
-          <ion-badge color="tops">
-            <ion-icon name="bicycle"></ion-icon>
-          </ion-badge>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-label><h1>Tops</h1></ion-label>
-          
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-item class="activated">
-          <ion-label>Hello world</ion-label>
-        </ion-item>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-badge color="lotus">
-            <ion-icon name="bicycle"></ion-icon>
-          </ion-badge>
-        </ion-card-header>
-        
-        <ion-card-content>
-          <ion-label>
-            <h1>Tesco Lotus</h1>
-          </ion-label>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-card-content>
-          7-Eleven
-        </ion-card-content>
-        
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-card>
-    <button ion-item (click)= card2Clicked()>
-      <ion-item href="#" class="activated">
-        <ion-icon name="wifi" slot="start"></ion-icon>
-        <ion-label>Card Link Item 1 .activated</ion-label>
-      </ion-item>
-    </button>
-  </ion-card>
+  <ion-searchbar placeHolder="What do you want to buy?"></ion-searchbar>
+  
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item.title }}
+    </ion-item>
+  </ion-list>
   
   
 

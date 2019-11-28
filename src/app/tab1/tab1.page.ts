@@ -14,12 +14,12 @@ import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.comp
 })
 export class Tab1Page implements OnInit{
   public shoppingList = [
-    { name: "Banana", price: 50, img: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1024-80.jpg"},
+    { name: "Banana", price: 50, img: "https://ripeme.com/wp-content/uploads/RF-10012-RIPE-ORGANIC-ORGANIC-BANANAS.jpg"},
     { name: "Mango", price: 60, img: "https://cdn.shopify.com/s/files/1/0076/4339/8233/products/yellow-mango.jpg?v=1544861632"},
     { name: "Apple", price: 30, img: "https://5.imimg.com/data5/YY/EN/MY-8155364/fresh-apple-500x500.jpg"}
   ]
   dataReturned: any;
-  isOkToAdd: boolean =false;
+  isOkToDelete: boolean =false;
   totalPrice: number = 0;
   sortingBy="";
   myEvent: any;
@@ -57,12 +57,17 @@ export class Tab1Page implements OnInit{
     
   }
   deleteItem(entryToDelete: any){
+    this.presentAlertConfirm(entryToDelete);
+    
+
+  }
+  performDeletion(entryToDelete) {
+    console.log('entryToDelete', entryToDelete)
     if (this.shoppingList.indexOf(entryToDelete) != -1) {
       this.shoppingList.splice(this.shoppingList.indexOf(entryToDelete), 1);
       console.log("item is deleted!");
-      
-    }
 
+    }
   }
   async presentPopover(ev: any) {
     console.log(ev, 'pop Over');
@@ -72,24 +77,26 @@ export class Tab1Page implements OnInit{
      });
     return await popover.present();
   }
-  async presentAlertConfirm() {
+  async presentAlertConfirm(entry) {
+    this.isOkToDelete == false;
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Are you sure you want to delete the item?!',
       buttons: [
         {
-          text: 'Okay',
+          text: 'Yes',
           handler: () => {
             console.log('Confirm Okay');
-            this.isOkToAdd=true;
+            this.performDeletion(entry)
+            this.isOkToDelete=true;
           }
         },
         {
-          text: 'Cancel',
+          text: 'No',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
+            this.isOkToDelete=false;
           }
         } 
       ]
@@ -97,11 +104,7 @@ export class Tab1Page implements OnInit{
 
     await alert.present();
   }
-  commenceAddingToCart(){
-    if(this.isOkToAdd){
-      this.shoppingList.splice(0,this.shoppingList.length);
-    }
-  }
+  
   doRefresh(event) {
     console.log('Begin async operation');
     

@@ -5,17 +5,15 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  public items: any = [];
+  public items = [
+    { name: "Banana", price: 50, img: "https://ripeme.com/wp-content/uploads/RF-10012-RIPE-ORGANIC-ORGANIC-BANANAS.jpg" },
+    { name: "Mango", price: 60, img: "https://cdn.shopify.com/s/files/1/0076/4339/8233/products/yellow-mango.jpg?v=1544861632" },
+    { name: "Apple", price: 30, img: "https://5.imimg.com/data5/YY/EN/MY-8155364/fresh-apple-500x500.jpg" }
+  ];
+  public fiveLastSearched = [];
 
   constructor() {
-    this.items = of([
-      { title: "one" },
-      { title: "two" },
-      { title: "three" },
-      { title: "four" },
-      { title: "five" },
-      { title: "six" }
-    ]);
+    
   }
 
   filterItems(items, searchTerm) {

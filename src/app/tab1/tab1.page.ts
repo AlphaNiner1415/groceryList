@@ -5,6 +5,7 @@ import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../components/popover/popover.component';
 import { AlertController } from '@ionic/angular';
 import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.component';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -14,9 +15,7 @@ import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.comp
 })
 export class Tab1Page implements OnInit{
   public shoppingList = [
-    { name: "Banana", price: 50, img: "https://ripeme.com/wp-content/uploads/RF-10012-RIPE-ORGANIC-ORGANIC-BANANAS.jpg"},
-    { name: "Mango", price: 60, img: "https://cdn.shopify.com/s/files/1/0076/4339/8233/products/yellow-mango.jpg?v=1544861632"},
-    { name: "Apple", price: 30, img: "https://5.imimg.com/data5/YY/EN/MY-8155364/fresh-apple-500x500.jpg"}
+    
   ]
   dataReturned: any;
   isOkToDelete: boolean =false;
@@ -26,7 +25,9 @@ export class Tab1Page implements OnInit{
   itemToUseName: any;
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController,
-    public modalController: ModalController) {}
+    public modalController: ModalController, public dataService: DataService) {
+      this.shoppingList = this.dataService.items;
+    }
   ngOnInit(){
 
   }
@@ -58,7 +59,6 @@ export class Tab1Page implements OnInit{
   }
   deleteItem(entryToDelete: any){
     this.presentAlertConfirm(entryToDelete);
-    
 
   }
   performDeletion(entryToDelete) {
@@ -83,7 +83,8 @@ export class Tab1Page implements OnInit{
       header: 'Are you sure you want to delete the item?!',
       buttons: [
         {
-          text: 'Yes',
+          text: 'Delete',
+          cssClass:'danger',
           handler: () => {
             console.log('Confirm Okay');
             this.performDeletion(entry)
@@ -91,7 +92,7 @@ export class Tab1Page implements OnInit{
           }
         },
         {
-          text: 'No',
+          text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {

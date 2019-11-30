@@ -22,7 +22,6 @@ export class Tab2Page implements OnInit{
   async getItems(){
     this.items = await this.dataService.getItems();
     console.log("item successfully get");
-    console.log(this.items);
   }
   onSearch(event){
     console.log(event.target.value);
@@ -30,11 +29,10 @@ export class Tab2Page implements OnInit{
   someAction(){
     this.buttonColor = "dark";
   }
-  postItem(){
-    this.dataService.postList(this.itemList);
-  }
-  addToList(idToAdd: any){
-    this.itemList.push(idToAdd);
+  
+  addToShoppingList(itemToAdd: any){
+    this.dataService.addToPendingList(itemToAdd);
+    console.log("Added to Shopping List!");
   }
 
 }

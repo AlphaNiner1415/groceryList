@@ -20,12 +20,9 @@
       <ion-list-header (click)="sortBy('price')" class="ion-text-right">Prices</ion-list-header>
       <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='price'"></ion-icon>
     </ion-item>
-    <ion-item *ngIf="shoppingList.length === 0">
-      <img src = '../../assets/background.jpeg'>
-    </ion-item>
-    <ion-card *ngFor="let items of shoppingList">
+    <ion-card *ngFor="let items of shoppingList; let odd= odd" >
       <ion-item-sliding>
-        <ion-item>
+        <ion-item >
           <ion-grid>
             <ion-row>
               <ion-col>

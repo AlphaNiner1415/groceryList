@@ -8,6 +8,7 @@ import { Items } from '../models/items.model';
 })
 export class DataService {
   public items = undefined;
+  public itemGoingToAdd = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
   private postUrl = "https://grocery-list877.herokuapp.com/updatelist/5de0c75a8993171d2eb4df71";
@@ -28,6 +29,7 @@ export class DataService {
           delete element._id;
           element.img = element.pic_link;
           delete element.pic_link;
+          obj.renameCategory(element);
         });
       
     }
@@ -65,6 +67,16 @@ export class DataService {
       default:
         break;
     }
+  }
+  addToPendingList(itemToAdd){
+    this.itemGoingToAdd.push(itemToAdd);
+  }
+  addToShoppingList(shoppingList: any){
+    this.itemGoingToAdd.forEach(element => {
+      if (shoppingList.indexOf(element) == -1){
+        shoppingList.push(element);
+      }
+    });
   }
 }
 

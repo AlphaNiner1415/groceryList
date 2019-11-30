@@ -1,6 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { TestModalPage } from '../test-modal/test-modal.page';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../components/popover/popover.component';
 import { AlertController } from '@ionic/angular';
@@ -14,9 +12,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-  public shoppingList = [
-    { name: 'banana', price: 50, img: "https://i.imgur.com/00Mw5x5.jpg"}
-  ]
+  public shoppingList = []
   dataReturned: any;
   isOkToDelete: boolean =false;
   totalPrice: number = 0;
@@ -24,8 +20,7 @@ export class Tab1Page implements OnInit{
   myEvent: any;
   itemToUseName: any;
   constructor(public popoverController: PopoverController, 
-    public alertController:AlertController,
-    public modalController: ModalController, public dataService: DataService) { }
+    public alertController:AlertController, public dataService: DataService) { }
   ngOnInit(){
 
   }
@@ -112,6 +107,8 @@ export class Tab1Page implements OnInit{
       event.target.complete();
     }, 2000);
     this.updateTotalPrice();
+    this.dataService.addToShoppingList(this.shoppingList);
+    console.log(this.shoppingList);
   }
   async presentItemPreview(ev:any){
     console.log('Preview',this.myEvent);

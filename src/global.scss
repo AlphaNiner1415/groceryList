@@ -25,12 +25,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 :root{
-  --ion-color-primary: #84b320;
-  --ion-color-primary-rgb: 132,179,32;
-  --ion-color-primary-contrast: #000000;
-  --ion-color-primary-contrast-rgb: 0,0,0;
-  --ion-color-primary-shade: #749e1c;
-  --ion-color-primary-tint: #90bb36;
+ 
   ion-tab-button.tab-selected {
     ion-icon, ion-label {
       color: #ffffff !important;

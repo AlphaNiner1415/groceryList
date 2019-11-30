@@ -1,11 +1,13 @@
 export interface Items{
+    _id: string;
+    category: number;
     name: string;
-    category: string;
-    img: string;
+    pic_link: string;
     price: {
-        big_c: number;
-        lotus: number;
-        tops: number;
+        avg_price: number;
         seven: number;
+        bigc: number;
+        tesco: number;
+        tops: number;
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../services/data.service";
-
+import { Items } from '../models/items.model';
 
 
 @Component({
@@ -10,14 +10,17 @@ import { DataService } from "../services/data.service";
 })
 export class Tab2Page implements OnInit{
   buttonColor: string = "primary";
-  items:any;
-  constructor(private dataService: DataService) { this.items = this.dataService.items;}
-  ngOnInit(){
-    
+  itemList =[];
+  items;
+  constructor(private dataService: DataService) {}
+  ngOnInit(){ 
+  }
+  ionViewWillEnter(){
+    this.getItems();
   }
   
-  getItems(){
-    this.items = this.dataService.items;
+  async getItems(){
+    this.items = await this.dataService.getItems();
     console.log("item successfully get");
     console.log(this.items);
   }
@@ -26,6 +29,12 @@ export class Tab2Page implements OnInit{
   }
   someAction(){
     this.buttonColor = "dark";
+  }
+  postItem(){
+    this.dataService.postList(this.itemList);
+  }
+  addToList(idToAdd: any){
+    this.itemList.push(idToAdd);
   }
 
 }

@@ -35,15 +35,19 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-button (click)="getItems()">Click Me to get Items</ion-button>
+  <ion-progress-bar type="indeterminate" *ngIf="items === undefined" color= "secondary"></ion-progress-bar>
+
   <ion-list>
     <ion-card *ngFor="let item of items">
-      <img src="{{item.img}}" class = "img2">
-      <ion-card-header>
+      <!-- <img src="{{item.img}}" class = "img2"> -->
+      <ion-card-header >
         <ion-card-title> {{ item.name }} </ion-card-title>
+        <!-- <img src="https://i.imgur.com/00Mw5x5.jpg"> -->
       </ion-card-header>
+      <ion-button (click) = "addToList(item._id)"> Click me to sent id</ion-button>
      
     </ion-card>
+    <ion-button (click) = postItem()>Click me when you're done</ion-button>
   </ion-list>
   
   

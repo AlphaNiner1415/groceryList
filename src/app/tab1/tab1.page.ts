@@ -15,7 +15,7 @@ import { DataService } from '../services/data.service';
 })
 export class Tab1Page implements OnInit{
   public shoppingList = [
-    
+    { name: 'banana', price: 50, img: "https://i.imgur.com/00Mw5x5.jpg"}
   ]
   dataReturned: any;
   isOkToDelete: boolean =false;
@@ -25,9 +25,7 @@ export class Tab1Page implements OnInit{
   itemToUseName: any;
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController,
-    public modalController: ModalController, public dataService: DataService) {
-      this.shoppingList = this.dataService.items;
-    }
+    public modalController: ModalController, public dataService: DataService) { }
   ngOnInit(){
 
   }

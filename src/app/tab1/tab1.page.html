@@ -3,6 +3,9 @@
     <ion-title color="light">
       Grocery List
     </ion-title>
+    <ion-button slot="end" fill="clear" (click)="presentPopover($event)">
+      <ion-icon name = "menu" color= "light"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -13,12 +16,20 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-list>
+    
     <ion-item>
       <ion-list-header (click)="sortBy('name')">Item</ion-list-header>
-      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='name'"></ion-icon>
+      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='name' && sort_is_clicked; else descending"></ion-icon>
+      <ng-template #descending>
+        <ion-icon name="md-arrow-dropup" *ngIf="sortingBy=='name'"></ion-icon>
+      </ng-template>
+      
       
       <ion-list-header (click)="sortBy('price')" class="ion-text-right">Prices</ion-list-header>
-      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='price'"></ion-icon>
+      <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='price' && sort_is_clicked; else decreasing"></ion-icon>
+      <ng-template #decreasing>
+        <ion-icon name="md-arrow-dropup" *ngIf="sortingBy=='price'"></ion-icon>
+      </ng-template>
     </ion-item>
     <ion-card *ngFor="let items of shoppingList; let odd= odd" >
       <ion-item-sliding>
@@ -38,7 +49,7 @@
             
               <ion-col class="ion-float-right">
                 <div class="ion-text-end">
-                  ฿{{items.price}}
+                  ฿{{items.price.avg_price}}
                 </div>
               </ion-col>
             </ion-row>

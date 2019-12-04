@@ -1,13 +1,12 @@
 
-<ion-header>
-  <ion-toolbar>
-    <ion-button fill="clear" class="exit-button" (click)="popOverWasClicked()">
-      <ion-icon name="close-circle-outline"></ion-icon>
-    </ion-button>
-    <ion-label no-wrap>Search For the Item you wish:</ion-label>
-    <ion-searchbar></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+
 <ion-content>
-  
+  <ion-list>
+    <ion-list-header>Ionic</ion-list-header>
+    <ion-item button>Learn Ionic</ion-item>
+    <ion-item button>Documentation</ion-item>
+    <ion-item button>Showcase</ion-item>
+    <ion-item button>GitHub Repo</ion-item>
+  </ion-list>
+  <ion-button expand="block" onClick="dismissPopover()">Close</ion-button>
 </ion-content>

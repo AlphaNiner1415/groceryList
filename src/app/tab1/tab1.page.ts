@@ -19,6 +19,7 @@ export class Tab1Page implements OnInit{
   sortingBy="";
   myEvent: any;
   itemToUseName: any;
+  sort_is_clicked: boolean = false;
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController, public dataService: DataService) { }
   ngOnInit(){
@@ -32,6 +33,7 @@ export class Tab1Page implements OnInit{
     });
   }
   sortBy(whatToSort: any){
+    
     if(whatToSort=="name"){
       this.sortingBy="name";
       this.shoppingList.sort(function (a, b) {
@@ -41,12 +43,34 @@ export class Tab1Page implements OnInit{
         if (nameA > nameB) { return 1; }
         return 0;
       });
+      switch (this.sort_is_clicked) {
+        case false:
+          this.sort_is_clicked = true;
+          break;
+        case true:
+          this.shoppingList.reverse();
+          this.sort_is_clicked = false;
+        default:
+          break;
+      }
+    
+      
     }
     if(whatToSort=="price"){
       this.sortingBy = "price";
       this.shoppingList.sort(function (a, b) {
         return b.price - a.price;
       });
+      switch (this.sort_is_clicked) {
+        case false:
+          this.sort_is_clicked = true;
+          break;
+        case true:
+          this.shoppingList.reverse();
+          this.sort_is_clicked = false;
+        default:
+          break;
+      }
     }
     
   }

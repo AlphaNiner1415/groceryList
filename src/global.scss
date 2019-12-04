@@ -43,12 +43,12 @@
   --ion-color-tops-shade: #d83a45;
   --ion-color-tops-tint: #f65560;
 
-  --ion-color-lotus: #42967b;
-  --ion-color-lotus-rgb: 66,150,123;
-  --ion-color-lotus-contrast: #ffffff;
-  --ion-color-lotus-contrast-rgb: 255,255,255;
-  --ion-color-lotus-shade: #3a846c;
-  --ion-color-lotus-tint: #55a188;
+  --ion-color-tesco: #42967b;
+  --ion-color-tesco-rgb: 66,150,123;
+  --ion-color-tesco-contrast: #ffffff;
+  --ion-color-tesco-contrast-rgb: 255,255,255;
+  --ion-color-tesco-shade: #3a846c;
+  --ion-color-tesco-tint: #55a188;
 
   --ion-color-bigc: #b5cb52;
   --ion-color-bigc-rgb: 181,203,82;
@@ -64,13 +64,27 @@
   --ion-color-white-shade: #e0e0e0;
   --ion-color-white-tint: #ffffff;
 
+  --ion-color-seven: #e0853a;
+  --ion-color-seven-rgb: 224,133,58;
+  --ion-color-seven-contrast: #000000;
+  --ion-color-seven-contrast-rgb: 0,0,0;
+  --ion-color-seven-shade: #c57533;
+  --ion-color-seven-tint: #e3914e;
+
 }
 
 .row{
   align-items: center;
 }
 
-
+.ion-color-seven {
+  --ion-color-base: var(--ion-color-seven);
+  --ion-color-base-rgb: var(--ion-color-seven-rgb);
+  --ion-color-contrast: var(--ion-color-seven-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-seven-contrast-rgb);
+  --ion-color-shade: var(--ion-color-seven-shade);
+  --ion-color-tint: var(--ion-color-seven-tint);
+}
 .ion-color-tops {
   --ion-color-base: var(--ion-color-tops);
   --ion-color-base-rgb: var(--ion-color-tops-rgb);
@@ -79,13 +93,13 @@
   --ion-color-shade: var(--ion-color-tops-shade);
   --ion-color-tint: var(--ion-color-tops-tint);
 }
-.ion-color-lotus {
-  --ion-color-base: var(--ion-color-lotus);
-  --ion-color-base-rgb: var(--ion-color-lotus-rgb);
-  --ion-color-contrast: var(--ion-color-lotus-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-lotus-contrast-rgb);
-  --ion-color-shade: var(--ion-color-lotus-shade);
-  --ion-color-tint: var(--ion-color-lotus-tint);
+.ion-color-tesco {
+  --ion-color-base: var(--ion-color-tesco);
+  --ion-color-base-rgb: var(--ion-color-tesco-rgb);
+  --ion-color-contrast: var(--ion-color-tesco-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-tesco-contrast-rgb);
+  --ion-color-shade: var(--ion-color-tesco-shade);
+  --ion-color-tint: var(--ion-color-tesco-tint);
 }
 .ion-color-bigc {
   --ion-color-base: var(--ion-color-bigc);

@@ -14,7 +14,25 @@
     </ion-card-header>
     
     <ion-item color="bigc" translucent="true" class="BigCCard">
-      <ion-label>Big C Price: ฿{{price}}</ion-label>
+      <ion-label>Big C Price: ฿{{price.bigc}}</ion-label>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item color="tesco" translucent="true" class="TescoCard">
+      <ion-label>Tesco Price: ฿{{price.tesco}}</ion-label>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item color="tops" translucent="true" class="TopsCard">
+      <ion-label>Tops Price: ฿{{price.tops}}</ion-label>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item color="seven" translucent="true" class="SevenCard">
+      <ion-label>7- Price: ฿{{price.avg_price}}</ion-label>
       <ion-button fill="clear">
         <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
       </ion-button>

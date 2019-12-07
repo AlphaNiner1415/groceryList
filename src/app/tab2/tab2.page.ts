@@ -34,5 +34,8 @@ export class Tab2Page implements OnInit{
     this.dataService.addToPendingList(itemToAdd);
     console.log("Added to Shopping List!");
   }
+  segmentChanged(){
+    console.log("The Segment has changed it's value");
+  }
 
 }

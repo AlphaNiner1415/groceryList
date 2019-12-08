@@ -4,6 +4,7 @@ import { PopoverComponent } from '../components/popover/popover.component';
 import { AlertController } from '@ionic/angular';
 import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.component';
 import { DataService } from '../services/data.service';
+import { MallSelectorService } from '../services/mall-selector.service';
 
 
 @Component({
@@ -19,10 +20,10 @@ export class Tab1Page implements OnInit{
   sortingBy="";
   myEvent: any;
   itemToUseName: any;
-  mallToUse: string = "seveneleven";
+  mallToUse: string;
   sort_is_clicked: boolean = false;
   constructor(public popoverController: PopoverController, 
-    public alertController:AlertController, public dataService: DataService) { }
+    public alertController:AlertController, public dataService: DataService, public mallSelector: MallSelectorService) { }
   ngOnInit(){
 
   }
@@ -112,6 +113,7 @@ export class Tab1Page implements OnInit{
      });
     return await popover.present();
   }
+  
   async presentAlertConfirm(entry) {
     this.isOkToDelete == false;
     const alert = await this.alertController.create({
@@ -160,6 +162,10 @@ export class Tab1Page implements OnInit{
       componentProps: this.shoppingList.find(element => element.name== this.itemToUseName),
       cssClass: 'pop-over-style',
     });
+    popover.onDidDismiss().then(() => {
+      this.mallToUse = this.mallSelector.getValueOfMall();
+      this.updateTotalPrice();
+    })
     return await popover.present();
   }
   setName(thatName,event){

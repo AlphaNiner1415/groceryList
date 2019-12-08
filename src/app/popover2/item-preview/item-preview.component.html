@@ -10,25 +10,25 @@
     
     <ion-item color="bigc" translucent="true" class="BigCCard">
       <ion-label wrap>Big C Price: ฿{{price.bigc}}</ion-label>
-      <ion-button fill="clear">
+      <ion-button fill="clear" (click)="exit('bigc')">
         <ion-label color="light">Show</ion-label>
       </ion-button>
     </ion-item>
     <ion-item color="tesco" translucent="true" class="TescoCard">
       <ion-label>Tesco Price: ฿{{price.tesco}}</ion-label>
-      <ion-button fill="clear">
+      <ion-button fill="clear" (click)="exit('tesco')">
         <ion-label color="light">Show</ion-label>
       </ion-button>
     </ion-item>
     <ion-item color="tops" translucent="true" class="TopsCard">
       <ion-label>Tops Price: ฿{{price.tops}}</ion-label>
-      <ion-button fill="clear" (click)=exit(tops)>
+      <ion-button fill="clear" (click)="exit('tops')">
         <ion-label color="light">Show</ion-label>
       </ion-button>
     </ion-item>
     <ion-item color="seven" translucent="true" class="SevenCard">
-      <ion-label>7- Price: ฿{{price.avg_price}}</ion-label>
-      <ion-button fill="clear">
+      <ion-label>7- Price: ฿{{price.seveneleven}}</ion-label>
+      <ion-button fill="clear" (click)="exit('seveneleven')">
         <ion-label color="light">Show</ion-label>
       </ion-button>
     </ion-item>

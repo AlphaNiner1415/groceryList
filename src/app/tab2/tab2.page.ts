@@ -29,16 +29,22 @@ export class Tab2Page implements OnInit{
     this.items2= this.items;
   }
   onSearch(event){
+    this.items2 = this.items;
     if(event.target.value === ""){
       this.items2 = this.items;
     }
     console.log(event.target.value);
-    
     this.items2.forEach(element => {
-      if(!(element.hasOwnProperty(event.target.value))){
-        this.items2.splice(this.items2.indexOf(element),1);
+      if((element.category.toLowerCase() == event.target.value.toLowerCase()) || (element.name.toLowerCase() == event.target.value.toLowerCase())){
+        console.log("Not Splicing: " + element.category.toLowerCase() + ", " + element.name.toLowerCase());
+        return;
       }
+      this.items2.splice(this.items2.indexOf(element), 1);
+      console.log("Splicing: " + element.category.toLowerCase() + ", " + element.name.toLowerCase());
+      
+    
     });
+    console.log(this.items2.length);
   }
   someAction(){
     this.buttonColor = "dark";

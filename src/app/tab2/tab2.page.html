@@ -10,18 +10,46 @@
   <ion-searchbar placeHolder="What do you want to buy?" (search)="onSearch($event)"></ion-searchbar>
   
   <ion-progress-bar type="indeterminate" *ngIf="items === undefined" color= "secondary"></ion-progress-bar>
+  <ion-item>
+    <ion-label>Sort by:</ion-label>
+    <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
+      <ion-select-option value="veggies">Vegetables</ion-select-option>
+      <ion-select-option value="fruits">Fruits</ion-select-option>
+      <ion-select-option value="meat/poultry">Meat & Poultry</ion-select-option>
+      <ion-select-option value="seafood">Seafood</ion-select-option>
+      <ion-select-option value="dairy">Dairy</ion-select-option>
+      <ion-select-option value="confections">Confections</ion-select-option>
+      <ion-select-option value="beverages">Beverages</ion-select-option>
+      <ion-select-option value="GBN">Grains</ion-select-option>
 
+    </ion-select>
+  </ion-item>
   <ion-list>
-    <ion-header>Sort by:</ion-header>
-    <ion-card *ngFor="let item of items">
+    
+    <ion-card *ngFor="let item of items2">
+      
       <img src="{{item.img}}" class = "img2">
-      <ion-card-header >
+      <ion-card-header>
         <ion-card-title> {{ item.name }} </ion-card-title>
         <!-- <img src="https://i.imgur.com/00Mw5x5.jpg"> -->
       </ion-card-header>
-      <ion-button (click) = "addToShoppingList(item)"> Click me to add Item</ion-button>
+      <ion-button (click) = "addToMyList(item)"> Click me to add Item</ion-button>
     </ion-card>
   </ion-list>
+  <div *ngIf="!data">
+    <ion-list>
+      <ion-card *ngFor="let text of numbers">
+        <ion-skeleton-text style="width: 20vh; height: 20vh" animated></ion-skeleton-text>
+        <ion-card-header>
+          <ion-card-title> <ion-skeleton-text style="height: 24px; width: 200px" animated></ion-skeleton-text> </ion-card-title>
+          <!-- <img src="https://i.imgur.com/00Mw5x5.jpg"> -->
+        </ion-card-header>
+        <ion-button fill="clear"> <ion-skeleton-text style="height: 24px; width: 200px" animated></ion-skeleton-text></ion-button>
+        
+      </ion-card>
+      
+    </ion-list>
+  </div>
   
   
 

@@ -19,6 +19,7 @@ export class Tab1Page implements OnInit{
   sortingBy="";
   myEvent: any;
   itemToUseName: any;
+  mallToUse: string = "seveneleven";
   sort_is_clicked: boolean = false;
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController, public dataService: DataService) { }
@@ -28,7 +29,24 @@ export class Tab1Page implements OnInit{
   updateTotalPrice(){
     this.totalPrice = 0;
     this.shoppingList.forEach(element => {
-      this.totalPrice = this.totalPrice+ element.price;
+      
+      switch (this.mallToUse) {
+        case "bigc":
+          this.totalPrice=this.totalPrice+element.price.bigc;
+          break;
+        case "seveneleven":
+          this.totalPrice = this.totalPrice + element.price.seveneleven;
+          break;
+        case "tops":
+          this.totalPrice = this.totalPrice + element.price.tops;
+          break;
+        case "tesco":
+          this.totalPrice = this.totalPrice + element.price.tesco;
+          break;
+        default:
+          this.totalPrice = this.totalPrice + element.price.avg_price;
+          break;
+      }
       console.log(this.totalPrice);
     });
   }
@@ -139,7 +157,8 @@ export class Tab1Page implements OnInit{
     const popover = await this.popoverController.create({
       component: ItemPreviewComponent,
       event: this.myEvent,
-      componentProps: this.shoppingList.find(element => element.name== this.itemToUseName)
+      componentProps: this.shoppingList.find(element => element.name== this.itemToUseName),
+      cssClass: 'pop-over-style',
     });
     return await popover.present();
   }

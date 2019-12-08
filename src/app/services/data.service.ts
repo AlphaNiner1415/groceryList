@@ -7,9 +7,9 @@ import { Items } from '../models/items.model';
   providedIn: 'root'
 })
 export class DataService {
-  public listId = {bigc:"5de2121cc910add3adee60af", tops: "5de2121dc910add3adee60b0", tesco: "5de2121dc910add3adee60b1", seven: "5de2121dc910add3adee60b2"};
+  public listId = {list1:"5de2121cc910add3adee60af", list2: "5de2121dc910add3adee60b0", list3: "5de2121dc910add3adee60b1", list4: "5de2121dc910add3adee60b2"};
   public items = undefined;
-  public itemGoingToAdd = [];
+  public pendingList = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
   private postUrl = "https://grocery-list877.herokuapp.com/updatelist/5de0c75a8993171d2eb4df71";
@@ -70,16 +70,16 @@ export class DataService {
     }
   }
   addToPendingList(itemToAdd){
-    this.itemGoingToAdd.push(itemToAdd);
+    this.pendingList.push(itemToAdd);
     console.log(itemToAdd);
   }
   addToShoppingList(shoppingList: any){
-    this.itemGoingToAdd.forEach(element => {
+    this.pendingList.forEach(element => {
       if (shoppingList.indexOf(element) == -1){
         shoppingList.push(element);
-        
       }
     });
+    this.pendingList = [];
   }
 }
 

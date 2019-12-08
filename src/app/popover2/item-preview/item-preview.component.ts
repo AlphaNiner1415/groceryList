@@ -18,7 +18,7 @@ export class ItemPreviewComponent implements OnInit {
   componentGetData(){
     this.previewComponentArray.push(this.name);
   }
-  exit(){
+  exit(params: any){
     this.popoverController.dismiss();
   }
 

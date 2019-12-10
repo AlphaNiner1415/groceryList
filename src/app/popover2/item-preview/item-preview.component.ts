@@ -20,9 +20,12 @@ export class ItemPreviewComponent implements OnInit {
     this.previewComponentArray.push(this.name);
   }
   exit(params: any){
-    this.mallSelector.setValueOfMall(params);
-    console.log("params: " + params)
-    this.popoverController.dismiss();
+    if(params != ""){
+      this.mallSelector.setValueOfMall(params);
+      console.log("params: " + params)
+      this.popoverController.dismiss();
+    }
+    
   }
 
 }

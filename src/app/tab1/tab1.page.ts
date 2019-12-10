@@ -32,16 +32,16 @@ export class Tab1Page implements OnInit{
     this.shoppingList.forEach(element => {
       
       switch (this.mallToUse) {
-        case "bigc":
+        case "Big C":
           this.totalPrice=this.totalPrice+element.price.bigc;
           break;
-        case "seveneleven":
+        case "7-11":
           this.totalPrice = this.totalPrice + element.price.seveneleven;
           break;
-        case "tops":
+        case "Tops":
           this.totalPrice = this.totalPrice + element.price.tops;
           break;
-        case "tesco":
+        case "Tesco":
           this.totalPrice = this.totalPrice + element.price.tesco;
           break;
         default:

@@ -36,7 +36,7 @@
       <ion-button (click) = "addToMyList(item)"> Click me to add Item</ion-button>
     </ion-card>
   </ion-list>
-  <div *ngIf="!data">
+  <div *ngIf="items2.length <= 0">
     <ion-list>
       <ion-card *ngFor="let item of numbers">
         <ion-skeleton-text style="width: 20vh; height: 20vh" animated></ion-skeleton-text>

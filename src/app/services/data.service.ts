@@ -51,7 +51,6 @@ export class DataService {
         objList.category = "Fruits";
         break;
       case 3:
-        objList.category = "Grains, Beans, & Nuts" 
         break;
       case 4:
         objList.category = "Meat and Poultry";

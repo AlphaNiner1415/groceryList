@@ -8,12 +8,8 @@ import { Items } from '../models/items.model';
 })
 export class DataService {
   public listId = {list1:"5de2121cc910add3adee60af", list2: "5de2121dc910add3adee60b0", list3: "5de2121dc910add3adee60b1", list4: "5de2121dc910add3adee60b2"};
-<<<<<<< HEAD
   public items = null;
   public items_Non_modified = null;
-=======
-  public items = undefined;
->>>>>>> parent of 9e56f05... Searchbar done, app is officially minimally working
   public pendingList = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";

@@ -22,6 +22,7 @@ export class Tab1Page implements OnInit{
   itemToUseName: any;
   mallToUse: string;
   sort_is_clicked: boolean = false;
+  
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController, public dataService: DataService, public mallSelector: MallSelectorService) { }
   ngOnInit(){
@@ -51,7 +52,29 @@ export class Tab1Page implements OnInit{
       console.log(this.totalPrice);
     });
   }
+  
   sortBy(whatToSort: any){
+    var mall = this.mallToUse
+    function priceSort( a, b) {
+      switch (mall) {
+        case "Big C":
+          return b.price.bigc - a.price.bigc;
+          break;
+        case "Tesco":
+          return b.price.tesco-a.price.tesco;
+          break;
+        case "7-11":
+          return b.price.seveneleven-a.price.seveneleven;
+          break;
+        case "Tops":
+          return b.price.tops-a.price.tops;
+        default:
+          return b.price.avg_price -a.price.avg_price;
+          break;
+      }
+      
+
+    }
     
     if(whatToSort=="name"){
       this.sortingBy="name";
@@ -77,9 +100,7 @@ export class Tab1Page implements OnInit{
     }
     if(whatToSort=="price"){
       this.sortingBy = "price";
-      this.shoppingList.sort(function (a, b) {
-        return b.price - a.price;
-      });
+      this.shoppingList.sort(priceSort);
       switch (this.sort_is_clicked) {
         case false:
           this.sort_is_clicked = true;

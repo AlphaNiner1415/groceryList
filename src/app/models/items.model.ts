@@ -5,7 +5,7 @@ export interface Items{
     pic_link: string;
     price: {
         avg_price: number;
-        seveneleven: number;
+        seven: number;
         bigc: number;
         tesco: number;
         tops: number;

@@ -1,53 +1,39 @@
 <ion-header translucent="true">
   <ion-toolbar color = "primary">
     <ion-title>
-      Items Catalog
+      Tab Two
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar placeHolder="What do you want to buy?" (ionChange)="onSearch($event)" [debounce] ="500"></ion-searchbar>
+  <ion-searchbar placeHolder="What do you want to buy?" (search)="onSearch($event)"></ion-searchbar>
   
   <ion-progress-bar type="indeterminate" *ngIf="items === null" color= "secondary"></ion-progress-bar>
   <ion-item>
     <ion-label>Sort by:</ion-label>
+<<<<<<< HEAD
     <ion-select (ionChange)="categorySort(SelectValue)" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
       <ion-select-option value="Vegetables">Vegetables</ion-select-option>
+=======
+    <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
+      <ion-select-option value="veggies">Vegetables</ion-select-option>
+>>>>>>> parent of 9e56f05... Searchbar done, app is officially minimally working
       <ion-select-option value="fruits">Fruits</ion-select-option>
-      <ion-select-option value="Meat and Poultry">Meat & Poultry</ion-select-option>
-      <ion-select-option value="Seafood">Seafood</ion-select-option>
-      <ion-select-option value="Dairy">Dairy</ion-select-option>
-      <ion-select-option value="Confections">Confections</ion-select-option>
-      <ion-select-option value="Beverages">Beverages</ion-select-option>
+      <ion-select-option value="meat/poultry">Meat & Poultry</ion-select-option>
+      <ion-select-option value="seafood">Seafood</ion-select-option>
+      <ion-select-option value="dairy">Dairy</ion-select-option>
+      <ion-select-option value="confections">Confections</ion-select-option>
+      <ion-select-option value="beverages">Beverages</ion-select-option>
       <ion-select-option value="GBN">Grains</ion-select-option>
 
     </ion-select>
   </ion-item>
   <ion-list>
     
-    <ion-card *ngFor="let item of items2" class = "card">
-      <ion-row>
-        <ion-col>
-          <img src="{{item.img}}" class="img2">
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label>Big C Price: {{item.price.bigc}}฿</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>Tesco Lotus Price: {{item.price.tesco}}฿</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>Tops Price: {{item.price.tops}}฿</ion-label>
-          </ion-item> 
-          <ion-item>
-            <ion-label>7-11 Price: {{item.price.seveneleven}}฿</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+    <ion-card *ngFor="let item of items2">
       
-      
+      <img src="{{item.img}}" class = "img2">
       <ion-card-header>
         <ion-card-title> {{ item.name }} </ion-card-title>
         <!-- <img src="https://i.imgur.com/00Mw5x5.jpg"> -->
@@ -55,7 +41,7 @@
       <ion-button (click) = "addToMyList(item)"> Click me to add Item</ion-button>
     </ion-card>
   </ion-list>
-  <div *ngIf="items2.length <= 0">
+  <div *ngIf="!data">
     <ion-list>
       <ion-card *ngFor="let item of numbers">
         <ion-skeleton-text style="width: 20vh; height: 20vh" animated></ion-skeleton-text>

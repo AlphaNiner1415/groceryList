@@ -8,22 +8,21 @@ import { Items } from '../models/items.model';
 })
 export class DataService {
   public listId = {list1:"5de2121cc910add3adee60af", list2: "5de2121dc910add3adee60b0", list3: "5de2121dc910add3adee60b1", list4: "5de2121dc910add3adee60b2"};
+<<<<<<< HEAD
   public items = null;
   public items_Non_modified = null;
+=======
+  public items = undefined;
+>>>>>>> parent of 9e56f05... Searchbar done, app is officially minimally working
   public pendingList = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
   private postUrl = "https://grocery-list877.herokuapp.com/updatelist/5de0c75a8993171d2eb4df71";
   constructor(public http: HttpClient) {}
 
-  filterItems(myItems, searchTerm) {
-    return myItems.filter(item => {
-      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
-  }
-  filterCategory(myItems, searchTerm) {
-    return myItems.filter(item => {
-      return item.category.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+  filterItems(items, searchTerm) {
+    return items.filter(item => {
+      return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
   async getItems(){
@@ -31,7 +30,6 @@ export class DataService {
       console.log('Getting Item!');
       let obj = this;
         obj.items = await obj.http.get<Items>(obj.itemsUrl).toPromise();
-        obj.items_Non_modified = obj.items;
         obj.items.forEach(element => {
           element.id = element._id;
           delete element._id;
@@ -44,9 +42,9 @@ export class DataService {
     return this.items;
     
   }
-  async postList(listName: any){
-    console.log(listName);
-    await this.http.post(this.postUrl, this.listId.list1).toPromise();
+  async postList(idToSend: any){
+    console.log(idToSend);
+    await this.http.post(this.postUrl, idToSend).toPromise();
   }
   renameCategory(objList){
     switch (objList.category) {
@@ -57,7 +55,7 @@ export class DataService {
         objList.category = "Fruits";
         break;
       case 3:
-        objList.category = "GBN" 
+        objList.category = "Grains, Beans, & Nuts" 
         break;
       case 4:
         objList.category = "Meat and Poultry";
@@ -70,10 +68,8 @@ export class DataService {
         break;
       case 7: 
         objList.category = "Confections";
-        break;
       case 8:
-        objList.category = "Beverages";
-        break;
+        objList.category = "Beverages"
       default:
         break;
     }
@@ -89,9 +85,6 @@ export class DataService {
       }
     });
     this.pendingList = [];
-  }
-  addToLastSearch(termToAdd: any){
-    this.fiveLastSearched.push(termToAdd);
   }
 }
 

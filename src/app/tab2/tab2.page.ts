@@ -9,7 +9,6 @@ import { Items } from '../models/items.model';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit{
-  public SelectValue: string;
   buttonColor: string = "primary";
   itemList =[];
   items = [];

@@ -14,8 +14,6 @@ import { TestModalPageModule } from './test-modal/test-modal.module';
 import { PopoverComponent } from './components/popover/popover.component';
 import { IonicGestureConfig } from './IonicGestureConfig';
 import { ItemPreviewComponent } from './popover2/item-preview/item-preview.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 
 
@@ -24,7 +22,7 @@ import { environment } from '../environments/environment';
   entryComponents: [PopoverComponent,ItemPreviewComponent],
   imports: [  
     FormsModule,  
-BrowserModule, IonicModule.forRoot(), AppRoutingModule, TestModalPageModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+BrowserModule, IonicModule.forRoot(), AppRoutingModule, TestModalPageModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

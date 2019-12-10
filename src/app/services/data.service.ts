@@ -8,8 +8,8 @@ import { Items } from '../models/items.model';
 })
 export class DataService {
   public listId = {list1:"5de2121cc910add3adee60af", list2: "5de2121dc910add3adee60b0", list3: "5de2121dc910add3adee60b1", list4: "5de2121dc910add3adee60b2"};
-  public items = null;
-  public items_Non_modified = null;
+  public items = undefined;
+  public items_Non_modified = undefined;
   public pendingList = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
@@ -22,7 +22,7 @@ export class DataService {
     });
   }
   async getItems(){
-    if (this.items === null){
+    if (this.items === undefined){
       console.log('Getting Item!');
       let obj = this;
         obj.items = await obj.http.get<Items>(obj.itemsUrl).toPromise();

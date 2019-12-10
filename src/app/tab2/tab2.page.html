@@ -7,12 +7,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar placeHolder="What do you want to buy?" (search)="onSearch($event)"></ion-searchbar>
+  <ion-searchbar placeHolder="What do you want to buy?" (ionChange)="onSearch($event)" [debounce]= "500"></ion-searchbar>
   
   <ion-progress-bar type="indeterminate" *ngIf="items === undefined" color= "secondary"></ion-progress-bar>
   <ion-item>
     <ion-label>Sort by:</ion-label>
-    <ion-select (ionChange)="categorySort(SelectValue)" [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
+    <ion-select (ionChange)="categorySort(SelectValue)" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
       <ion-select-option value="Vegetables">Vegetables</ion-select-option>
       <ion-select-option value="fruits">Fruits</ion-select-option>
       <ion-select-option value="meat/poultry">Meat & Poultry</ion-select-option>

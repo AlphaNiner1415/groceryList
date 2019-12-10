@@ -9,6 +9,7 @@ import { Items } from '../models/items.model';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit{
+  SelectValue: string;
   buttonColor: string = "primary";
   itemList =[];
   items = [];
@@ -33,17 +34,7 @@ export class Tab2Page implements OnInit{
     if(event.target.value === ""){
       this.items2 = this.items;
     }
-    console.log(event.target.value);
-    this.items2.forEach(element => {
-      if((element.category.toLowerCase() == event.target.value.toLowerCase()) || (element.name.toLowerCase() == event.target.value.toLowerCase())){
-        console.log("Not Splicing: " + element.category.toLowerCase() + ", " + element.name.toLowerCase());
-        return;
-      }
-      this.items2.splice(this.items2.indexOf(element), 1);
-      console.log("Splicing: " + element.category.toLowerCase() + ", " + element.name.toLowerCase());
-      
-    
-    });
+    this.items2 = this.dataService.filterItems(this.items, event.target.value);
     console.log(this.items2.length);
   }
   someAction(){
@@ -56,6 +47,9 @@ export class Tab2Page implements OnInit{
   }
   segmentChanged(){
     console.log("The Segment has changed it's value");
+  }
+  categorySort(param:any){
+    this.dataService.filterCategory(this.items, param);
   }
 
 }

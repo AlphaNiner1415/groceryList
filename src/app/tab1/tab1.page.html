@@ -49,11 +49,11 @@
             
               <ion-col class="ion-float-right">
                 <div class="ion-text-end" [ngSwitch]="mallToUse">
-                  <ion-label *ngSwitchCase="'bigc'">฿{{items.price.bigc}}</ion-label>
-                  <ion-label *ngSwitchCase="'seveneleven'">฿{{items.price.seveneleven}}</ion-label>
-                  <ion-label *ngSwitchCase="'tops'">฿{{items.price.tops}}</ion-label>
-                  <ion-label *ngSwitchCase="'tesco'">฿{{items.price.tesco}}</ion-label>
-                  <ion-label *ngSwitchDefault>฿{{items.price.avg_price}}</ion-label>
+                  <ion-label *ngSwitchCase="'Big C'">{{items.price.bigc}}฿</ion-label>
+                  <ion-label *ngSwitchCase="'7-11'">{{items.price.seveneleven}}฿</ion-label>
+                  <ion-label *ngSwitchCase="'Tops'">{{items.price.tops}}฿</ion-label>
+                  <ion-label *ngSwitchCase="'Tesco'">{{items.price.tesco}}฿</ion-label>
+                  <ion-label *ngSwitchDefault>{{items.price.avg_price}}฿</ion-label>
                   
                 </div>
               </ion-col>
@@ -72,7 +72,7 @@
   <ion-item *ngIf='shoppingList.length!=0'>
     <h3>{{mallToUse}} Total:</h3>
     <ion-label class="ion-text-end">
-      <h2>฿{{totalPrice}}</h2>
+      <h2>{{totalPrice}}฿</h2>
     </ion-label>
   </ion-item>
 

@@ -1,5 +1,5 @@
 .card {
- background: rgb(37, 179, 129);
+ background: #ffffff !important;
 }
 .image{
   width: 20px;
@@ -11,6 +11,6 @@
   --color: rgb(37, 179, 129) !important;
 }
 .img2 {
-  width:auto;
-  height: 20vh;
+  max-width:auto;
+  max-height: 20vh;
 }

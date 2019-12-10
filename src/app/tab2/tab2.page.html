@@ -12,13 +12,8 @@
   <ion-progress-bar type="indeterminate" *ngIf="items === null" color= "secondary"></ion-progress-bar>
   <ion-item>
     <ion-label>Sort by:</ion-label>
-<<<<<<< HEAD
     <ion-select (ionChange)="categorySort(SelectValue)" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
       <ion-select-option value="Vegetables">Vegetables</ion-select-option>
-=======
-    <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
-      <ion-select-option value="veggies">Vegetables</ion-select-option>
->>>>>>> parent of 9e56f05... Searchbar done, app is officially minimally working
       <ion-select-option value="fruits">Fruits</ion-select-option>
       <ion-select-option value="meat/poultry">Meat & Poultry</ion-select-option>
       <ion-select-option value="seafood">Seafood</ion-select-option>

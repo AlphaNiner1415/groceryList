@@ -2,11 +2,19 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Ionic</ion-list-header>
-    <ion-item button>Learn Ionic</ion-item>
-    <ion-item button>Documentation</ion-item>
-    <ion-item button>Showcase</ion-item>
-    <ion-item button>GitHub Repo</ion-item>
+    <ion-header>Select where to Save your Shopping List</ion-header>
+    <ion-item button>{{list1_name}}
+      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item button>{{list2_name}}
+      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item button>{{list3_name}}
+      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item button>{{list4_name}}
+      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    </ion-item>
   </ion-list>
-  <ion-button expand="block" onClick="dismissPopover()">Close</ion-button>
+  <ion-button expand="block" (click)="popOverWasClicked()">Close</ion-button>
 </ion-content>

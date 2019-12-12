@@ -31,6 +31,7 @@ export class DataService {
       console.log('Getting Item!');
       let obj = this;
         obj.items = await obj.http.get<Items>(obj.itemsUrl).toPromise();
+        obj.items_Non_modified = obj.items;
         obj.items.forEach(element => {
           element.id = element._id;
           delete element._id;

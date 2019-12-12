@@ -8,10 +8,17 @@
 }
 
 .toolbarBackground {
-  --background: rgb(14,71,1);
-  --background: linear-gradient(360deg, rgba(14,71,1,0.9178046218487395) 0%, rgba(52,121,9,0.7973564425770308) 35%, rgba(132,179,32,0.8253676470588236) 100%),url('../../assets/background.jpeg') bottom no-repeat !important;
+  --background: rgb(173,46,45);
+  --background: linear-gradient(360deg, rgba(173,46,45,1) 0%, rgba(193,85,84,1) 35%, rgba(204,131,131,1) 100%);
 }
 .content {
   --background: rgb(14,71,1);
   --background: linear-gradient(360deg, rgba(14,71,1,0.9178046218487395) 0%, rgba(52,121,9,0.7973564425770308) 35%, rgba(132,179,32,0.8253676470588236) 100%);
+}
+.listItem {
+  background: #cc8383;
+}
+.totalItem{
+  --border-color: black;
+  --border-width: 2px;
 }

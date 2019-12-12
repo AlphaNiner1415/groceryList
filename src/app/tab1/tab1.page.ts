@@ -130,6 +130,7 @@ export class Tab1Page implements OnInit{
     console.log(ev, 'pop Over');
     const popover = await this.popoverController.create({
       component: PopoverComponent,
+      componentProps: {key1: this.shoppingList},
       event: ev,
      });
     return await popover.present();

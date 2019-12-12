@@ -1,5 +1,5 @@
-<ion-header translucent=true>
-  <ion-toolbar class="toolbarBackground">
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title color="light">
       Grocery List
     </ion-title>
@@ -9,13 +9,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content color="back">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list class= "listItem">
     
     <ion-item>
       <ion-list-header (click)="sortBy('name')">Item</ion-list-header>
@@ -42,7 +42,7 @@
               <ion-col ion-long-press [interval]="400"
   (pressed)="setName(items.name,$event)"
   (longPressed)="presentItemPreview($event)">
-                <ion-card-subtitle>
+                <ion-card-subtitle style="font-size: medium">
                   {{items.name}}
                 </ion-card-subtitle>
               </ion-col>
@@ -69,9 +69,9 @@
     </ion-card>
 
   </ion-list>
-  <ion-item *ngIf='shoppingList.length!=0'>
-    <h3>{{mallToUse}} Total:</h3>
-    <ion-label class="ion-text-end">
+  <ion-item *ngIf='shoppingList.length!=0' color="back" class="totalItem">
+    <h3 style="color:white">{{mallToUse}} Total:</h3>
+    <ion-label class="ion-text-end" color= "white">
       <h2>฿{{totalPrice}}</h2>
     </ion-label>
   </ion-item>

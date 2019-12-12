@@ -3,17 +3,17 @@
 <ion-content>
   <ion-list>
     <ion-header>Select where to Save your Shopping List</ion-header>
-    <ion-item button>{{list1_name}}
-      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    <ion-item button (click) ="presentAlertPrompt('0')">{{nameArray[0]}}
+      <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button>{{list2_name}}
-      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    <ion-item button (click)="presentAlertPrompt('1')">{{nameArray[1]}}
+      <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button>{{list3_name}}
-      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    <ion-item button (click) = "presentAlertPrompt('2')">{{nameArray[2]}}
+      <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button>{{list4_name}}
-      <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon>
+    <ion-item button (click) = "presentAlertPrompt('3')">{{nameArray[3]}}
+      <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
   </ion-list>
   <ion-button expand="block" (click)="popOverWasClicked()">Close</ion-button>

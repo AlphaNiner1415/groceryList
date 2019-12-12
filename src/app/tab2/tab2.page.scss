@@ -11,6 +11,9 @@
   --color: rgb(37, 179, 129) !important;
 }
 .img2 {
-  width:auto;
-  height: 20vh;
+  max-width: 100%;
+  height: auto;
+}
+.listItem {
+  background: #cc8383;
 }

@@ -31,7 +31,15 @@
       color: #ffffff !important;
       --ion-color-base: var(--ion-color-secondary) !important;
     }
-  
+  }
+  ion-button{
+    --color: #F2E5D7 !important;
+    --border-color: #F2E5D7 !important;
+    --color-activated: #F2E5D7 !important;
+  }
+  ion-searchbar{
+    --placeholder-color: #F2E5D7 !important;
+    --color: #F2E5D7 !important;
   }
   // ion-card{
   //   background: white !important;

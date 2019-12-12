@@ -6,12 +6,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="back">
-  <ion-searchbar placeHolder="What do you want to buy?" (ionChange)="onSearch($event)" [debounce]= "500" color="white"></ion-searchbar>
+<ion-content color="primary">
+  <ion-searchbar placeHolder="What do you want to buy?" (ionChange)="onSearch($event)" [debounce]= "500" color="primary"></ion-searchbar>
   
   <ion-progress-bar type="indeterminate" *ngIf="items === undefined" color= "secondary"></ion-progress-bar>
-  <ion-item color="back">
-    <ion-label color="white">Category</ion-label>
+  <ion-item color="primary">
+    <ion-label>Category</ion-label>
     <ion-select (ionChange)="categorySort(SelectValue)" interface="popover" placeholder="Select One" [(ngModel)]="SelectValue">
       <ion-select-option value="Vegetables">Vegetables</ion-select-option>
       <ion-select-option value="fruits">Fruits</ion-select-option>
@@ -27,22 +27,22 @@
   </ion-item>
   <ion-list class= "listItem">
     
-    <ion-card *ngFor="let item of items2" color="white">
+    <ion-card *ngFor="let item of items2" color="primary">
       <ion-row>
         <ion-col>
           <img src="{{item.img}}" class="img2">
         </ion-col>
-        <ion-col >
-          <ion-item>
+        <ion-col>
+          <ion-item color="primary">
             <ion-label>Big C Price: {{item.price.bigc}}฿</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item color="primary">
             <ion-label>Tesco Lotus Price: {{item.price.tesco}}฿</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item color="primary">
             <ion-label>Tops Price: {{item.price.tops}}฿</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item color="primary">
             <ion-label>7-11 Price: {{item.price.seveneleven}}฿</ion-label>
           </ion-item>
         </ion-col>
@@ -52,12 +52,12 @@
         <ion-card-title> {{ item.name }} </ion-card-title>
         <!-- <img src="https://i.imgur.com/00Mw5x5.jpg"> -->
       </ion-card-header>
-      <ion-button (click) = "addToMyList(item)"> Click me to add Item</ion-button>
+      <ion-button (click) = "addToMyList(item)" fill="outline"> Click me to add Item</ion-button>
     </ion-card>  
   </ion-list>
   <div *ngIf="items2.length <= 0">
     <ion-list class= "listItem">
-      <ion-card *ngFor="let item of numbers" color="white">
+      <ion-card *ngFor="let item of numbers" color="primary">
         
         <ion-row>
           <ion-col>

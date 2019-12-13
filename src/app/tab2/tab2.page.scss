@@ -6,9 +6,9 @@
   height: 20px;
 }
 .mybutton {
-  --border-color: rgb(37, 179, 129);
-  --box-shadow: none;
-  --color: rgb(37, 179, 129) !important;
+  --border-color: #F2E5D7 !important;
+  --border-width: 1px !important;
+  --border-style: solid;
 }
 .img2 {
   max-width: 100%;
@@ -16,4 +16,15 @@
 }
 .listItem {
   background: #F2E5D7;
+}
+.myItem{
+  --padding-bottom: 1px;
+}
+.myContent{
+  --padding-bottom: 10px;
+}
+.myBar{
+  .ion-searchbar{
+    --placeholder-color: #F2E5D7 !important;
+  }
 }

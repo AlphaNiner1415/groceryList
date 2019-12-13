@@ -132,6 +132,7 @@ export class Tab1Page implements OnInit{
       component: PopoverComponent,
       componentProps: {key1: this.shoppingList},
       event: ev,
+      cssClass: 'custom-Popover'
      });
     return await popover.present();
   }

@@ -18,14 +18,14 @@
   <ion-list class= "listItem">
     
     <ion-item color="tertiary">
-      <ion-list-header (click)="sortBy('name')" class="ion-text-left"><ion-title color="primary">Item</ion-title></ion-list-header>
+      <ion-list-header (click)="sortBy('name')" class="ion-text-left">Item</ion-list-header>
       <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='name' && sort_is_clicked; else descending"></ion-icon>
       <ng-template #descending>
         <ion-icon name="md-arrow-dropup" *ngIf="sortingBy=='name'"></ion-icon>
       </ng-template>
       
       
-      <ion-list-header (click)="sortBy('price')" class="ion-text-right"><ion-title color="primary">Prices</ion-title></ion-list-header>
+      <ion-list-header (click)="sortBy('price')" class="ion-text-right">Prices</ion-list-header>
       <ion-icon name="md-arrow-dropdown" *ngIf="sortingBy=='price' && sort_is_clicked; else decreasing"></ion-icon>
       <ng-template #decreasing>
         <ion-icon name="md-arrow-dropup" *ngIf="sortingBy=='price'"></ion-icon>

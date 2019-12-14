@@ -49,10 +49,12 @@ export class Tab2Page implements OnInit{
     console.log("The Segment has changed it's value");
   }
   categorySort(param:any){
+    console.log(param);
     if(param === ""){
       this.items2 = this.items;
     }
     this.items2 = this.dataService.filterCategory(this.items, param);
+    console.log(this.items2.length);
   }
 
 }

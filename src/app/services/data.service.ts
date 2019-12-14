@@ -70,6 +70,7 @@ export class DataService {
         break;
       case 7: 
         objList.category = "Confections";
+        break;
       case 8:
         objList.category = "Beverages"
       default:

@@ -14,6 +14,7 @@ export class DataService {
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
   private postUrl = "https://grocery-list877.herokuapp.com/updatelist/";
+  private getListUrl = "https://grocery-list877.herokuapp.com/getlistitems/"
   constructor(public http: HttpClient) {}
 
   filterItems(items2, searchTerm) {

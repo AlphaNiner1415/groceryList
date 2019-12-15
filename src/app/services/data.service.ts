@@ -12,6 +12,7 @@ export class DataService {
   public items_Non_modified = null;
   public listItems: any = [];
   public pendingList = [];
+  public pendingList2 = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
   private postUrl = "https://grocery-list877.herokuapp.com/updatelist/";
@@ -31,6 +32,14 @@ export class DataService {
 
   async getListItems(listNo){
     this.listItems = await this.http.get(this.getListUrl+this.listId[listNo]).toPromise();
+    this.listItems.forEach(element => {
+      element.id = element._id;
+      delete element._id;
+      element.img = element.pic_link;
+      delete element.pic_link;
+      this.renameCategory(element);
+    });
+    console.log(this.listItems);
   }
   async getItems(){
     if (this.items === null){
@@ -51,34 +60,35 @@ export class DataService {
     
   }
   async postList(idToSend: any,listNo){
-    console.log(idToSend);
+    console.log("id that we're sending: " + idToSend);
     await this.http.post(this.postUrl+this.listId[listNo], idToSend).toPromise();
+    
   }
-  renameCategory(objList){
-    switch (objList.category) {
+  renameCategory(item){
+    switch (item.category) {
       case 1:
-        objList.category = "Vegetables";
+        item.category = "Vegetables";
         break;
       case 2: 
-        objList.category = "Fruits";
+        item.category = "Fruits";
         break;
       case 3:
-        objList.category = "GBN" 
+        item.category = "GBN" 
         break;
       case 4:
-        objList.category = "Meat and Poultry";
+        item.category = "Meat and Poultry";
         break;
       case 5:
-        objList.category = "Seafood";
+        item.category = "Seafood";
         break;
       case 6:
-        objList.category = "Dairy";
+        item.category = "Dairy";
         break;
       case 7: 
-        objList.category = "Confections";
+        item.category = "Confections";
         break;
       case 8:
-        objList.category = "Beverages"
+        item.category = "Beverages"
       default:
         break;
     }
@@ -94,6 +104,15 @@ export class DataService {
       }
     });
     this.pendingList = [];
+  }
+  addToPendingList2(itemToAdd){
+    this.pendingList2.push(itemToAdd);
+  }
+  addToShoppingList2(shoppingList: any){
+    if(this.pendingList2.length> 0 ){
+      shoppingList = this.pendingList2;
+      this.pendingList2 = [];
+    }
   }
 }
 

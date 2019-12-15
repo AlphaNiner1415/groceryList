@@ -15,5 +15,8 @@ export class NameListPasserService {
   setWholeArray(array: Array<string>){
     this.nameArray = array;
   }
+  setBlankArray(list: any){
+    list = [];
+  }
 
 }

@@ -27,7 +27,10 @@ export class Tab1Page implements OnInit{
   constructor(public popoverController: PopoverController, 
     public alertController:AlertController, public dataService: DataService, public mallSelector: MallSelectorService, public nameListPass: NameListPasserService) { }
   ngOnInit(){
-
+    // this.dataService.postList('', 0);
+    // this.dataService.postList('', 1);
+    // this.dataService.postList('', 2);
+    // this.dataService.postList('', 3);
   }
   updateTotalPrice(){
     this.totalPrice = 0;
@@ -178,6 +181,7 @@ export class Tab1Page implements OnInit{
     }, 2000);
     this.updateTotalPrice();
     this.dataService.addToShoppingList(this.shoppingList);
+    this.dataService.addToShoppingList2(this.shoppingList);
     console.log(this.shoppingList);
   }
   async presentItemPreview(ev:any){

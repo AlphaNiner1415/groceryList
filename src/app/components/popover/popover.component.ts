@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { TestModalPage } from '../../test-modal/test-modal.page';
 import { NameListPasserService } from 'src/app/services/name-list-passer.service';
 
+
 @Component({
   selector: 'app-popover',
   templateUrl: './popover.component.html',
@@ -28,21 +29,27 @@ export class PopoverComponent implements OnInit {
     console.log("closing without passing");
   }
   delegator(listNo: string){
+    //console.log("item List: "+ this.itemList);
     this.dataService.getListItems(listNo);
+    console.log("dataBase's List of Items: " + this.dataService.listItems);
     if(this.dataService.listItems.length > 0){
-      this.presentModal(listNo);
-    } else if(this.nameArray[listNo] === this.nameArray2[listNo]){
+      this.dataService.listItems.forEach(element => {
+        this.dataService.addToPendingList2(element);
+      })
+    } else {
+      this.itemList.forEach(element => {
+        this.itemList2.push(element.id);
+      });
+      console.log("List Number" + this.nameArray[listNo]);
+      this.dataService.postList(this.itemList2, listNo);
+    }
+    if(this.nameArray[listNo] === this.nameArray2[listNo]){
       this.presentAlertPrompt(listNo);
       
     }
+    
   }
-  async presentModal(listNo) {
-    const modal = await this.modalController.create({
-      component: TestModalPage,
-      componentProps: {listId: listNo, modalTitle: this.nameArray[listNo]}
-    });
-    return await modal.present();
-  }
+  
   async presentAlertPrompt(listNo: string) {
     
     const alert = await this.alertController.create({
@@ -84,10 +91,7 @@ export class PopoverComponent implements OnInit {
     await alert.present();
   }
   dismiss(listNo: any){
-    this.itemList.forEach(element => {
-      this.itemList2.push(element.id);
-    });
-    this.dataService.postList(this.itemList2, listNo);
+
     this.popoverController.dismiss();
   }
 

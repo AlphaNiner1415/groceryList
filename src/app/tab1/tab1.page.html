@@ -32,7 +32,7 @@
       </ng-template>
     </ion-item>
     <ion-item text-center color="tertiary" lines="none" *ngIf="shoppingList.length == 0 && dataService.pendingList.length == 0">
-      <ion-label  class="ion-text-wrap"> Brevity is the soul of wit, but the app can't run without items, so go ahead and press the Find Prices tab and add some items away!!!</ion-label>
+      <ion-label  class="ion-text-wrap"> Brevity is the soul of wit, but the app can't run without items, so go ahead and press the Find Items tab and add some items away!!!</ion-label>
     </ion-item>
       <ion-label *ngIf="shoppingList.length == 0 && dataService.pendingList.length > 0" class="ion-text-wrap"> Pull down to refresh and see your new additions.</ion-label>
     <ion-card *ngFor="let items of shoppingList; let odd= odd" >

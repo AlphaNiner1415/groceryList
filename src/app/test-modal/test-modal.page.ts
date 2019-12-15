@@ -21,7 +21,6 @@ export class TestModalPage implements OnInit {
   }
   getListItems(){
     this.modalList = this.dataService.listItems;
-    console.log(this.modalList);
   }
   async closeModal() {
     const onClosedData: string = "Wrapped Up!";

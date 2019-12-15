@@ -11,6 +11,7 @@ import { NameListPasserService } from 'src/app/services/name-list-passer.service
 })
 export class PopoverComponent implements OnInit {
   nameArray: Array<string> = this.nameListPass.getNameArray();
+  nameArray2: Array<string> = ["List 1", "List 2", "List 3", "List 4"];
   itemList: any = this.navParams.get('key1');
   itemList2 = [];
   
@@ -24,14 +25,15 @@ export class PopoverComponent implements OnInit {
   }
   popOverWasClicked(){
     this.popoverController.dismiss();
-    console.log(this.itemList);
+    console.log("closing without passing");
   }
   delegator(listNo: string){
     this.dataService.getListItems(listNo);
     if(this.dataService.listItems.length > 0){
       this.presentModal(listNo);
-    } else {
+    } else if(this.nameArray[listNo] === this.nameArray2[listNo]){
       this.presentAlertPrompt(listNo);
+      
     }
   }
   async presentModal(listNo) {
@@ -63,12 +65,9 @@ export class PopoverComponent implements OnInit {
             }
             
             console.log(this.nameArray);
-            this.itemList.forEach(element => {
-              this.itemList2.push(element.id);
-            });
-            this.dataService.postList(this.itemList2, listNo);
-
-            this.popoverController.dismiss();
+            
+            this.nameListPass.setWholeArray(this.nameArray);
+            this.dismiss(listNo);
           }
         },
         {
@@ -76,13 +75,20 @@ export class PopoverComponent implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            
+            this.dismiss(listNo);
           }
         }
       ]
     });
 
     await alert.present();
+  }
+  dismiss(listNo: any){
+    this.itemList.forEach(element => {
+      this.itemList2.push(element.id);
+    });
+    this.dataService.postList(this.itemList2, listNo);
+    this.popoverController.dismiss();
   }
 
 }

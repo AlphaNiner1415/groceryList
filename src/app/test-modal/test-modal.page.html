@@ -1,14 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <div>
-      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
-      <ion-label>Search For the Item you wish:</ion-label>
-    </div>
-    <ion-searchbar></ion-searchbar>
+<ion-header color="tertiary">
+  <ion-toolbar color= "tertiary">
+    <ion-title>{{modalTitle}}</ion-title>
   </ion-toolbar>
 
 </ion-header>
 
-<ion-content>
-  
+<ion-content color="tertiary">
+  <ion-card *ngFor="let items of modalList">
+    <ion-item color="primary">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src={{items.pic_link}} class="img">
+          </ion-col>
+          <ion-col>
+            <ion-card-subtitle style="font-size: medium" color="tertiary">
+              {{items.name}}
+            </ion-card-subtitle>
+          </ion-col>
+
+          <ion-col class="ion-float-right">
+            <ion-label> {{items.price.avg_price}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+      
+  </ion-card>
 </ion-content>

@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { ItemPreviewComponent } from '../popover2/item-preview/item-preview.component';
 import { DataService } from '../services/data.service';
 import { MallSelectorService } from '../services/mall-selector.service';
+import { NameListPasserService } from '../services/name-list-passer.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class Tab1Page implements OnInit{
   sort_is_clicked: boolean = false;
   
   constructor(public popoverController: PopoverController, 
-    public alertController:AlertController, public dataService: DataService, public mallSelector: MallSelectorService) { }
+    public alertController:AlertController, public dataService: DataService, public mallSelector: MallSelectorService, public nameListPass: NameListPasserService) { }
   ngOnInit(){
 
   }
@@ -135,6 +136,8 @@ export class Tab1Page implements OnInit{
       cssClass: 'custom-Popover'
      });
     return await popover.present();
+    
+    
   }
   
   async presentAlertConfirm(entry) {

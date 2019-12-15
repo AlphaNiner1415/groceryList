@@ -1,6 +1,6 @@
 
 <ion-header class= "myList">
-  <ion-list text-wrap class="myList">
+  <ion-list class="ion-text-wrap" class="myList">
     <ion-label color="primary">
       <h1>
         Select where to Save your Shopping List
@@ -12,16 +12,16 @@
 <ion-content class= "myContent" color ="tertiary">
   
   <ion-list class= "myList">
-    <ion-item button (click) ="presentAlertPrompt('0')" color="tertiary">{{nameArray[0]}}
+    <ion-item button (click) ="delegator('0')" color="tertiary">{{nameArray[0]}}
       <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button (click)="presentAlertPrompt('1')" color="tertiary">{{nameArray[1]}}
+    <ion-item button (click)="delegator('1')" color="tertiary">{{nameArray[1]}}
       <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button (click) = "presentAlertPrompt('2')" color="tertiary">{{nameArray[2]}}
+    <ion-item button (click) = "delegator('2')" color="tertiary">{{nameArray[2]}}
       <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
-    <ion-item button (click) = "presentAlertPrompt('3')" color="tertiary">{{nameArray[3]}}
+    <ion-item button (click) = "delegator('3')" color="tertiary">{{nameArray[3]}}
       <!-- <ion-icon name="ios-arrow-forward" slot="end" color="primary"></ion-icon> -->
     </ion-item>
   </ion-list>

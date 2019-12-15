@@ -10,6 +10,7 @@ export class DataService {
   public listId = ["5de2121cc910add3adee60af","5de2121dc910add3adee60b0","5de2121dc910add3adee60b1","5de2121dc910add3adee60b2"];
   public items = null;
   public items_Non_modified = null;
+  public listItems: any = [];
   public pendingList = [];
   public fiveLastSearched = [];
   private itemsUrl = "https://grocery-list877.herokuapp.com/getallitems";
@@ -26,6 +27,10 @@ export class DataService {
     return items2.filter(item => {
       return item.category.toLowerCase().indexOf(category.toLowerCase()) > -1;
     });
+  }
+
+  async getListItems(listNo){
+    this.listItems = await this.http.get(this.getListUrl+this.listId[listNo]).toPromise();
   }
   async getItems(){
     if (this.items === null){
